@@ -50,6 +50,12 @@
 8. **Leaderboard Service** - Rankings, competitions
 9. **Real-time Engine** - Live updates, order book streaming
 
+1. Core Gateway (Gateway + Auth)
+2. Tranding Service
+3. Market Data Service
+4. Portfolio Service
+5. Notification Service
+
 ### Event Architecture:
 **Kafka Topics**: `order.created`, `order.executed`, `price.updated`, `portfolio.updated`, `user.notifications`, `market.events`
 
