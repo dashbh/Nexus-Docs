@@ -1,94 +1,105 @@
-# 🚀 Nexus Trading Platform – Progress Tracker
+# Nexus Project Development Roadmap 🚀
 
-This file tracks project milestones and task completion for the Nexus Trading Simulator.  
+## 1. Repository Setup 📦
+
+- ✅ Created Nexus-FE (Next.js, Vercel)
+- ✅ Created Nexus-BE (NestJS, pnpm turborepo, EC2 deployment)
+- ✅ Setup common packages (`@nexus/types`, `@nexus/validation`, `@nexus/utils`, `@nexus/config`, `@nexus/errors`, `@nexus/proto`)
+- ✅ Configured Turbo for builds & installs
+
+## 2. Backend (Nexus-BE) 🖥️
+
+### 2.1 Core Services
+
+- ✅ Gateway (HTTP + TCP microservice connections)
+- ✅ Trading Service (mock JSON responses)
+- ✅ FinData Service (mock JSON responses)
+- ✅ Notification Service (mock JSON responses)
+- ⏳ DB integration (PostgreSQL, Redis, MongoDB)
+- ⏳ Order matching engine implementation
+- ⏳ Portfolio calculations & P&L engine
+- ⏳ Notification rules & multi-channel support
+
+### 2.2 Communication & Infra
+
+- ✅ TCP microservice communication
+- ✅ Gateway exposed over HTTP
+- ⏳ Switch to gRPC for service-to-service calls
+- ⏳ Kafka setup for event streaming
+
+### 2.3 Deployment
+
+- ✅ GitHub Actions: build on PR
+- ✅ GitHub Actions: deploy on merge (Makefile + rsync to EC2)
+- ✅ pm2 for process management (only gateway exposed)
+- ⏳ Add Redis to EC2 stack
+- ⏳ Add PostgreSQL (RDS free tier)
+- ⏳ Add MongoDB Atlas for time-series data
+
+## 3. Frontend (Nexus-FE) 💻
+
+### 3.1 Base Setup
+
+- ✅ Next.js 14 + TypeScript + TailwindCSS
+- ✅ Integrated shadcn/ui, Redux Toolkit, RTK Query
+- ✅ Deployed to Vercel
+
+### 3.2 Pages
+
+- ✅ `/login`: Basic authentication form
+- ✅ `/portfolio`: Holdings, current values, P&L
+- ✅ `/market`: Real-time stock prices & market data (mock)
+- ✅ `/orders`: Order history with sorting/filtering/actions
+- ⏳ Component refactoring (split large files into reusable parts)
+- ⏳ Auth flow integration with Nexus-BE gateway
+- ⏳ Real-time WebSocket market updates
+- ⏳ Portfolio/Orders linked to live backend data
+
+### 3.3 Optimization
+
+- ⏳ Code splitting & lazy loading
+- ⏳ SSR/SSG hybrid strategy for key pages
+- ⏳ Bundle analyzer integration
+- ⏳ Lighthouse 100% optimization
+
+## 4. Security 🔐
+
+- 🚧 JWT + httpOnly refresh strategy (planned, partial in BE gateway)
+- ✅ Gateway CORS setup (basic)
+- ⏳ Add Redis-backed session validation
+- ⏳ CSP + secure headers enforcement
+- ⏳ CSRF protection with SameSite cookies
+- ⏳ mTLS for service-to-service gRPC calls
+
+## 5. Monitoring & Testing 🧪
+
+- ✅ GitHub Actions pipeline (build + deploy)
+- ⏳ Jest + Testing Library for FE unit tests
+- ⏳ Playwright for FE E2E
+- ⏳ Jest + Supertest for BE API tests
+- ⏳ Distributed tracing across BE services
+- ⏳ Performance dashboards (CloudWatch + Vercel Analytics)
+
+## 6. Success Criteria (High-Level) 🎯
+
+- 🚧 Perfect Lighthouse scores (Performance, Accessibility, SEO, Best Practices)
+- ⏳ Sub-50ms real-time updates with WebSocket
+- ⏳ 1000+ concurrent user handling simulation
+- ⏳ >80% automated test coverage
+- ⏳ Zero-downtime deployments with preview envs
+- ⏳ Distributed tracing + observability
 
 ---
 
-## 📌 Milestones Overview
-- [ ] **Backend Foundation** – Core services setup (Gateway, Trading, FinData, Notification)
-- [ ] **Frontend Foundation** – Next.js UI, auth flows, WebSocket integration
-- [ ] **Trading Core Loop** – Orders → Matching Engine → Portfolio updates
-- [ ] **Notifications & Monitoring** – Alerts, performance dashboards, CloudWatch
-- [ ] **Deployment & CI/CD** – Docker Compose on AWS EC2, GitHub Actions pipeline
+## Legend 📝
 
----
-
-## ✅ Completed
-- [x] Project repositories created: `Nexus-FE` & `Nexus-BE`
-- [x] Next.js + Tailwind + TS setup
-- [x] NestJS monorepo setup with ConfigService
-- [x] Initial security/auth strategy defined (JWT + httpOnly cookies)
-
----
-
-## 🛠 Backend Foundation
-- [ ] **Gateway Service**
-  - [ ] REST/GraphQL API Gateway skeleton
-  - [ ] JWT + refresh token flow
-  - [ ] WebSocket session handling
-- [ ] **Trading Service**
-  - [ ] Order lifecycle skeleton
-  - [ ] Basic matching engine
-  - [ ] Trade history persistence
-- [ ] **FinData Service**
-  - [ ] Market data generator (random/AI-driven)
-  - [ ] Historical data storage
-  - [ ] Portfolio valuation logic
-- [ ] **Notification Service**
-  - [ ] Kafka consumer setup
-  - [ ] WebSocket push notifications
-  - [ ] Email/alerts integration
-- [ ] **Infrastructure**
-  - [ ] Docker Compose setup (EC2 target)
-  - [ ] Kafka + Zookeeper container
-  - [ ] PostgreSQL schema migration
-  - [ ] Redis session cache
-
----
-
-## 🎨 Frontend Foundation
-- [ ] Authentication pages (login/register/logout)
-- [ ] Trading dashboard layout (Tailwind)
-- [ ] WebSocket client setup
-- [ ] State management with Zustand/Context
-- [ ] Portfolio view (positions, P&L)
-- [ ] Order form (buy/sell)
-- [ ] Order history table
-- [ ] Price chart (real-time updates)
-
----
-
-## 🔄 Trading Core Loop
-- [ ] Place order → Gateway → Kafka → Trading Service
-- [ ] Execute trade → update DB
-- [ ] Portfolio updated → push to client
-- [ ] Real-time price updates → FinData → WebSocket
-- [ ] Optimistic UI updates for trades
-
----
-
-## 🔔 Notifications & Monitoring
-- [ ] User alerts (trade executed, portfolio updated)
-- [ ] System alerts (order failed, connection lost)
-- [ ] CloudWatch metrics (CPU, memory, network)
-- [ ] Distributed tracing (request correlation IDs)
-- [ ] Error boundaries + logging
-
----
-
-## 🚀 Deployment & CI/CD
-- [ ] GitHub Actions: lint + test pipeline
-- [ ] Docker multi-stage builds
-- [ ] Blue/green deployment script
-- [ ] Vercel deployment (FE)
-- [ ] EC2 deployment (BE)
-- [ ] CloudWatch dashboards
-
----
-
-## 📊 Stretch Goals
-- [ ] A/B testing framework
-- [ ] Advanced trading strategies (user scripts)
-- [ ] WCAG accessibility compliance
-- [ ] Performance benchmark report
-- [ ] Documentation site with architecture diagrams
+- ✅ **Completed** - Task is fully done
+- 🚧 **In Progress** - Currently working on this
+- ⏳ **Pending** - Planned but not started yet
+- 🚀 **Project**
+- 📦 **Setup/Config**
+- 🖥️ **Backend**
+- 💻 **Frontend**
+- 🔐 **Security**
+- 🧪 **Testing/Monitoring**
+- 🎯 **Goals/Metrics**
