@@ -89,6 +89,14 @@
 - ⏳ Zero-downtime deployments with preview envs
 - ⏳ Distributed tracing + observability
 
+## 9. Stretch Goals 🌟
+
+- ⏳ A/B testing framework
+- ⏳ Advanced trading strategies (user scripts)
+- ⏳ WCAG accessibility compliance
+- ⏳ Performance benchmark report
+- ⏳ Documentation site with architecture diagrams
+
 ---
 
 ## Legend 📝
