@@ -40,7 +40,6 @@ Each entry: **Date → What I did → What’s pending → Next task**
 
 ## 📅 Daily Log
 
-**Template for upcoming days:**
 ```
 ### 2025-09-10
 ✅ Completed
